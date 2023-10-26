@@ -1,31 +1,32 @@
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
-  before do
-    ActiveSupport::TestCase.fixture_path = Rails.root.join('spec', 'fixtures')
+  before :all do
+    @user = User.create(name: 'Phil')
+    @post = Post.create(author: @user, title: 'Title')
   end
 
-  it 'should belong to an author' do
-    user = User.create(name: 'Essohanam', photo: 'profile_picture', bio: 'User 1 called', post_counter: 0)
-    post = Post.create(author: user, title: 'Eat me', text: 'You can fry and eat')
-    comment = Comment.new(author: user, post: post, text: 'Nice buddy')
-    
-    expect(comment).to be_valid
+  context '#create' do
+    it 'is valid with existing user and post' do
+      expect(Comment.new(user: @user, post: @post)).to be_valid
+    end
+
+    it 'is not valid without post' do
+      expect(Comment.new(user: @user)).to_not be_valid
+    end
+
+    it 'is not valid without user' do
+      expect(Comment.new(post: @post)).to_not be_valid
+    end
   end
 
-  it 'should belong to a post' do
-    user = User.create(name: 'Essohanam', photo: 'profile_picture', bio: 'User 1 called', post_counter: 0)
-    post = Post.create(author: user, title: 'Eat me', text: 'You can fry and eat')
-    comment = Comment.new(author: user, post: post, text: 'Nice buddy')
-    
-    expect(comment).to be_valid
-  end
+  context '#update_comments_counter' do
+    before :all do
+      8.times { |comment_i| Comment.create(user: @user, post: @post, text: (comment_i + 1).to_s) }
+    end
 
-  it 'can have text' do
-    user = User.create(name: 'Essohanam', photo: 'profile_picture', bio: 'User 1 called', post_counter: 0)
-    post = Post.create(author: user, title: 'Eat me', text: 'You can fry and eat')
-    comment = Comment.new(author: user, post: post, text: 'Nice buddy')
-    
-    expect(comment.text).to eq('Nice buddy')
+    it 'keeps track of comments and equals 8' do
+      expect(@post.comments_counter).to eq 8
+    end
   end
 end

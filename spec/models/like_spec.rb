@@ -1,24 +1,32 @@
 require 'rails_helper'
 
 RSpec.describe Like, type: :model do
-  fixtures :users  # Charge les fixtures pour le modèle User
-
-  it 'should belong to an author' do
-    user = users(:user1)  # Utilisez la fixture user1
-    like = Like.new(user: user, post: nil)
-    like.save
-
-    association = Like.reflect_on_association(:user)
-    expect(association.macro).to eq(:belongs_to)
+  before :all do
+    @user = User.create(name: 'Phil')
+    @post = Post.create(author: @user, title: 'Title')
   end
 
-  it 'should belong to a post' do
-    user = users(:user1)
-    post = Post.create(author: user, title: 'Eat me', text: 'You can fry and eat')
-    like = Like.new(user: nil, post: post)
-    like.save
+  context '#create' do
+    it 'is valid with existing user and post' do
+      expect(Like.new(user: @user, post: @post)).to be_valid
+    end
 
-    association = Like.reflect_on_association(:post)
-    expect(association.macro).to eq(:belongs_to)
+    it 'is not valid without post' do
+      expect(Like.new(user: @user)).to_not be_valid
+    end
+
+    it 'is not valid without user' do
+      expect(Like.new(post: @post)).to_not be_valid
+    end
+  end
+
+  context '#update_likes_counter' do
+    before :all do
+      8.times { Like.create(user: @user, post: @post) }
+    end
+
+    it 'keeps track of likes and equals 8' do
+      expect(@post.likes_counter).to eq 8
+    end
   end
 end
