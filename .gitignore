@@ -5,7 +5,7 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 # .gitignore
-node_modules/
+node_modules
 
 # Ignore bundler config.
 /.bundle
