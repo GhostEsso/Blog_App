@@ -8,7 +8,7 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :text, presence: true
 
-  after_save :post_counter
+  after_save :update_post_counter
 
   private
 

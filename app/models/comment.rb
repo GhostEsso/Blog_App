@@ -8,6 +8,8 @@ class Comment < ApplicationRecord
 
   after_save :update_comments
 
+  private
+
   def update_comments
     post = self.post
     post.update(comments_counter: post.comments.count)
