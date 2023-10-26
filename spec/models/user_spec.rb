@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject do
-    User.new(name: 'Essohanam', photo: 'profile_picture', bio: 'User 1 called', post_counter: 0)
-  end
+  fixtures :users  # Charge les fixtures du modèle User
 
-  before { subject.save }
+  subject do
+    users(:user1)  # Utilisez la fixture user1
+  end
 
   it 'is valid with valid attributes' do
     expect(subject).to be_valid

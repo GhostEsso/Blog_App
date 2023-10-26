@@ -1,0 +1,6 @@
+# spec/fixtures/users.yml
+user1:
+  name: Essohanam
+  photo: link
+  bio: User 1 called
+  post_counter: 0

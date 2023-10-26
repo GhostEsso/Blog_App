@@ -1,8 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  let(:user) { User.create(name: 'Essohanam', photo: 'link', bio: 'User 1 called', post_counter: 0) }
+  fixtures :users  # Charge les fixtures pour le modèle User
+
   subject do
+    user = users(:user1)  # Utilisez la fixture user1
     Post.new(author: user, title: 'Eat me', text: 'You can fry and eat')
   end
 
@@ -34,7 +36,7 @@ RSpec.describe Post, type: :model do
 
   it 'has a positive likes counter' do
     subject.likes_counter = -1
-    expect(subject).to_not be_valid
+    expect(subject).to_not be valid
   end
 
   it 'has a valid author' do

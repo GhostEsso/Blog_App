@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
+  before do
+    ActiveSupport::TestCase.fixture_path = Rails.root.join('spec', 'fixtures')
+  end
+
   it 'should belong to an author' do
     user = User.create(name: 'Essohanam', photo: 'profile_picture', bio: 'User 1 called', post_counter: 0)
     post = Post.create(author: user, title: 'Eat me', text: 'You can fry and eat')
