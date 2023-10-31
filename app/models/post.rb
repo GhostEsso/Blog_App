@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
-  has_many :comment
-  has_many :like
+  has_many :comments
+  has_many :likes
   belongs_to :author, class_name: 'User'
   after_save :update_posts_counter
 

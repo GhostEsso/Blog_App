@@ -1,12 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Posts</title>
-  </head>
-  <body>
-    <h1>Here is a selected post for a given user</h1>
-  </body>
-</html>
+<div id="post" >
+  <h3><%= @post.title %> by <%= @post.author.name %></h3>
+  <p class="counter">
+    Comments: <%= @post.comments_counter.to_i %>, Likes: <%= @post.likes_counter.to_i %>
+  </p>
+  <p><%= @post.text %></p>
+</div>
+
+<ul id="comment_container">
+  <% @post.comments.each do |comment| %>
+    <li id="comment">
+      <p><%= comment.user.name %>: <%= comment.text %></p>
+    </li>
+  <% end %>
+</ul>
