@@ -10,8 +10,6 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
-  # create new and create methods
-
   def new
     @post = Post.new
   end
@@ -20,7 +18,7 @@ class PostsController < ApplicationController
     @post = Post.new(params.require(:post).permit(:title, :text))
     @post.author = current_user
     if @post.save
-      flash[:success] = 'Post created'
+      flash[:success] = 'Post Created!'
       redirect_to user_posts_url
     else
       flash.now[:error] = 'Error: Post can not be created!'

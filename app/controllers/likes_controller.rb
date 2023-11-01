@@ -7,7 +7,7 @@ class LikesController < ApplicationController
       flash[:success] = 'Liked!'
       redirect_to user_post_path(id: @like.post_id, user_id: @like.user_id)
     else
-      flash.now[:error] = 'Something went wrong!'
+      flash.now[:error] = 'It seems like something went wrong!'
     end
   end
 end
