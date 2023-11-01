@@ -1,0 +1,14 @@
+<h1>Create a new Comment</h1>
+
+<% flash.each do |name, msg| -%>
+  <%= content_tag :div, msg, class: name %>
+<% end -%>
+<%= form_with model: [:user, :post, @comment], data: { turbo: false }, local: true do |f| %>
+  <div>
+    <%= f.label :text %><br>
+    <%= f.text_field :text %><br>
+    <%= f.hidden_field :user_id, value: params[:user_id] %>
+    <%= f.hidden_field :post_id, value: params[:post_id] %>
+    <%= f.submit "Comment" %>
+  </div>
+<% end %>

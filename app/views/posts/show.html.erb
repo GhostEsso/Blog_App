@@ -6,6 +6,10 @@
   <p><%= @post.text %></p>
 </div>
 
+<% flash.each do |name, msg| -%>
+  <%= content_tag :div, msg, class: name %>
+<% end -%>
+
 <ul id="comment_container">
   <% @post.comments.each do |comment| %>
     <li id="comment">
@@ -13,3 +17,6 @@
     </li>
   <% end %>
 </ul>
+
+<%= render partial: "likes/like_action", locals: { post: @post } %>
+<%= link_to 'New Comment', new_user_post_comment_path(post_id: params[:id]) %>
