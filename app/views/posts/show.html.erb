@@ -18,4 +18,5 @@
   <% end %>
 </ul>
 
+<%= render partial: "likes/like_action", locals: { post: @post } %>
 <%= link_to 'New Comment', new_user_post_comment_path(post_id: params[:id]) %>
