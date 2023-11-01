@@ -2,6 +2,12 @@
    <%= render partial: "users/user_info", locals: { user: @user } %>
 </div>
 
+<% flash.each do |name, msg| -%>
+  <%= content_tag :div, msg, class: name %>
+<% end -%>
+
+<%= link_to 'New Post', new_user_post_path %>
+
 <ul id="post_container">
   <% @posts.each_with_index do |post, i| %>
     <li>
