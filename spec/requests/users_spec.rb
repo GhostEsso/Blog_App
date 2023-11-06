@@ -7,6 +7,7 @@ RSpec.describe 'Users', type: :request do
   context 'GET /index' do
     before :each do
       # Perform an HTTP GET request to retrieve the list of users
+      User.create(name: 'Tom')
       get users_path
     end
 
@@ -27,7 +28,7 @@ RSpec.describe 'Users', type: :request do
 
     # Check for the presence of an HTML tag in the response body
     it 'renders the correct placeholder' do
-      expect(response.body).to include('<h1>Here is a list of users</h1>')
+      expect(response.body).to include('<h2>Tom</h2>')
     end
   end
 
@@ -57,7 +58,9 @@ RSpec.describe 'Users', type: :request do
 
     # Check for the presence of an HTML tag in the response body
     it 'renders the correct placeholder' do
-      expect(response.body).to include('<h1>Here is a selected user</h1>')
+      expect(response.body).to include('<h2>Tom</h2>')
+      expect(response.body).to include('<p>Number of posts: 0</p>')
+      expect(response.body).to include('<h3>Bio</h3>')
     end
   end
 end
