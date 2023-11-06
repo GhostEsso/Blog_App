@@ -1,4 +1,4 @@
-<div id="post" >
+<div class="post" >
   <h3><%= @post.title %> by <%= @post.author.name %></h3>
   <p class="counter">
     Comments: <%= @post.comments_counter.to_i %>, Likes: <%= @post.likes_counter.to_i %>
@@ -10,9 +10,9 @@
   <%= content_tag :div, msg, class: name %>
 <% end -%>
 
-<ul id="comment_container">
+<ul class="comments_container">
   <% @post.comments.each do |comment| %>
-    <li id="comment">
+    <li class="comment">
       <p><%= comment.user.name %>: <%= comment.text %></p>
     </li>
   <% end %>

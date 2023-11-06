@@ -5,9 +5,11 @@ require 'rails_helper'
 RSpec.describe 'Posts', type: :request do
   # Context for the "GET /index" test
   context 'GET /index' do
+    let(:user) { User.create(name: 'Tom') }
     before :each do
       # Perform an HTTP GET request to retrieve the list of posts for a user
-      get '/users/:user_id/posts'
+      Post.create(author: user, title: 'Title')
+      get user_posts_path(user)
     end
 
     # Check that the response is successful
@@ -27,7 +29,11 @@ RSpec.describe 'Posts', type: :request do
 
     # Check for the presence of an HTML tag in the response body
     it 'renders the correct placeholder' do
-      expect(response.body).to include('<h1>Here is a list of posts for a given user</h1>')
+      expect(response.body).to include('<h2>Tom</h2>')
+      expect(response.body).to include('<p>Number of posts: 1</p>')
+      expect(response.body).to include('<h3>Title</h3>')
+      expect(response.body).to include('<p></p>')
+      expect(response.body).to include(`<p class="counter">\nComments: 0, Likes: 0\n</p>`)
     end
   end
 
@@ -59,7 +65,9 @@ RSpec.describe 'Posts', type: :request do
 
     # Check for the presence of an HTML tag in the response body
     it 'renders the correct placeholder' do
-      expect(response.body).to include('<h1>Here is a selected post for a given user</h1>')
+      expect(response.body).to include('<h3>Title by Tom</h3>')
+      expect(response.body).to include('<p></p>')
+      expect(response.body).to include(`<p class="counter">\nComments: 0, Likes: 0\n</p>`)
     end
   end
 end
