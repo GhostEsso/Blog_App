@@ -63,7 +63,6 @@ group :development do
   # gem "spring"
 
   gem 'error_highlight', '>= 0.4.0', platforms: [:ruby]
-  gem 'bullet'
 end
 
 group :test do
@@ -72,3 +71,5 @@ group :test do
   gem 'selenium-webdriver'
   gem 'database_cleaner'
 end
+
+gem 'bullet', group: :development
