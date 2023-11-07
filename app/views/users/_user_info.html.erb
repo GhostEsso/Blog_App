@@ -1,4 +1,6 @@
-<img src=<%= user.photo %> class="user_photo" alt="a_user">
+<div class="user_photo",>
+  <%= image_tag(user.photo || "missing_avatar.png", alt: "a_user") %>
+</div>
 <div class="user_text">
   <h2><%= user.name %></h2><br>
   <p>Number of posts: <%= user.posts_counter.to_i %></p>
