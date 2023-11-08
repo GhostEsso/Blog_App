@@ -11,9 +11,9 @@ Rails.application.routes.draw do
 
   get '/login', to: 'login#index'
   resources :users, only: [:index, :show] do
-    resources :posts, only: [:index, :new, :create, :show] do
-      resources :comments, only: [:new, :create]
-      resources :likes, only: [:create]
+    resources :posts, only: [:index, :new, :create, :show, :destroy] do
+      resources :comments, only: [:new, :create, :destroy]
+      resources :likes, only: [:create, :destroy]
     end
   end
 end

@@ -10,6 +10,7 @@ end
 
 ruby '3.1.2'
 
+gem 'cancancan'
 gem 'devise'
 gem 'mailcatcher'
 gem 'sass-rails'
