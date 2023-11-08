@@ -1,22 +1,43 @@
 <div class="post" >
   <h3><%= @post.title %> by <%= @post.author.name %></h3>
+  <p><%= @post.text %></p>
+
   <p class="counter">
     Comments: <%= @post.comments_counter.to_i %>, Likes: <%= @post.likes_counter.to_i %>
   </p>
-  <p><%= @post.text %></p>
+
+  <% if can? :destroy, @post %>
+    <%= form_with model: @post, url: user_post_path(@post.author, @post), method: :delete do |f| %>
+      <%= f.submit "Delete Post" %>
+    <% end %>
+  <% end %>
 </div>
+
+<% if can? :create, Like %>
+  <%= render partial: "likes/like_action", locals: { post: @post } %>
+<% end %>
 
 <% flash.each do |name, msg| -%>
   <%= content_tag :div, msg, class: name %>
 <% end -%>
 
 <ul class="comments_container">
+  <h3>Comments:</h3>
   <% @post.comments.each do |comment| %>
     <li class="comment">
+
       <p><%= comment.user.name %>: <%= comment.text %></p>
-    </li>
+    
+      <% if can? :destroy, comment %>
+        <%= form_with model: comment, url: user_post_comment_path(@post.author, @post, id: comment.id), method: :delete do |f| %>
+          <%= f.submit "Delete Comment" %>
+        <% end %>
+      <% end %>
+
+      </li>
   <% end %>
 </ul>
 
-<%= render partial: "likes/like_action", locals: { post: @post } %>
-<%= link_to 'New Comment', new_user_post_comment_path(post_id: params[:id]) %>
+<% if can? :create, Comment %>
+  <%= link_to 'New Comment', new_user_post_comment_path(@post.author, @post) %>
+<% end %>
