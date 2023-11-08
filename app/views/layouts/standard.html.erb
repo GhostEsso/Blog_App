@@ -12,10 +12,19 @@
   </head>
 
    <body>
+    <header>
+      <% if current_user %>
+        <%= link_to "Sing out", destroy_user_session_path, 
+        'data-turbo-method': :delete %>
+      <% end %>
+    </header>
 
-      <div id = "container">
-        <%= yield -%>
-      </div>
+    <main id = "container">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+
+      <%= yield -%>
+    </main>
 
    </body>
    
