@@ -15,7 +15,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(params.require(:post).permit(:title, :text))
+    @post = Post.new(post_params)
     @post.author = current_user
     if @post.save
       flash[:success] = 'Post Created!'
@@ -24,5 +24,19 @@ class PostsController < ApplicationController
       flash.now[:error] = 'Error: Post can not be created!'
       render :new, locals: { post: @post }
     end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.author.decrement!(:posts_counter)
+    @post.destroy!
+    flash[:success] = 'Post deleted successfully'
+    redirect_to user_posts_url
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :text)
   end
 end
