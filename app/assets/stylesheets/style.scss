@@ -1,11 +1,11 @@
-$purple-light: #9b95f5;
-$purple-dark: #4a4763;
-$light-background: #363636;
-$dark-background: #2b2b2b;
+$purple-light: rgb(8, 145, 236);
+$purple-dark: #475963;
+$light-background: #000000;
+$dark-background: #132e0e;
 $white-text: #fff;
 $pale-text: #e2e2e2;
-$imortant-text: #2b2b2b;
-$border-grey: #a7a7a7;
+$imortant-text: #753636;
+$border-grey: #ffffffbb;
 
 * {
   margin: 0;
@@ -14,12 +14,12 @@ $border-grey: #a7a7a7;
 }
 
 body {
-  font-family: Helvetica, Geneva, Arial, sans-serif;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Geneva, Arial, sans-serif;
 }
 
 header {
   background-color: $dark-background;
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 1rem;
   text-align: right;
 }
 
