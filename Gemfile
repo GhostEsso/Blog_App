@@ -13,6 +13,7 @@ ruby '3.1.2'
 gem 'devise'
 gem 'mailcatcher'
 gem 'sass-rails'
+gem 'cancancan'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.1.1'
