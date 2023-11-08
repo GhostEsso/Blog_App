@@ -98,6 +98,13 @@ In order to run this project you need:
 - LinkedIn: [Tambana Essohanam](https://www.linkedin.com/in/essohanam-tambana/)
 
 
+👤 **Christopher Uduekwe**
+
+- GitHub: [@GhostEsso](https://github.com/chudisoft)
+- Twitter: [@TambanaEssohana](https://twitter.com/christopher-uduwkwe)
+- LinkedIn: [Tambana Essohanam](https://www.linkedin.com/in/chudisoft/)
+
+
 ## 🔭 Future Features <a name="future-features"></a>
 
 - [ ] **[Advance Features ]**
