@@ -24,3 +24,7 @@ Comment.create(post: first_post, user: second_user, text: "I'm a teacher too!")
 Comment.create(post: first_post, user: third_user, text: 'Hello Tom!')
 Comment.create(post: first_post, user: third_user, text: 'Glad to meet you!')
 Comment.create(post: first_post, user: third_user, text: "I'm from Mexico too!")
+first_user.confirm
+second_user.confirm
+third_user.confirm
+fourth_user.confirm
