@@ -1,11 +1,11 @@
 $purple-light: rgb(8, 145, 236);
 $purple-dark: #475963;
-$light-background: #000000;
+$light-background: #000;
 $dark-background: #132e0e;
 $white-text: #fff;
 $pale-text: #e2e2e2;
 $imortant-text: #753636;
-$border-grey: #ffffffbb;
+$border-grey: #fffb;
 
 * {
   margin: 0;
@@ -14,7 +14,7 @@ $border-grey: #ffffffbb;
 }
 
 body {
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Geneva, Arial, sans-serif;
+  font-family: 'Arial Narrow Bold', Arial, sans-serif;
 }
 
 header {
