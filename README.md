@@ -66,24 +66,55 @@ To get a local copy up and running, follow these steps.
 
 ### Prerequisites
 
-In order to run this project you need: 
+In order to run this project you need:
 
--Commands: npm install
+- GitHub account;
+- Git installed on your OS;
+- VSCode (or another code editor);
+- modern browser (supporting HTML5 and CSS3) is highly recommended;
+- [Ruby](https://www.ruby-lang.org/en/documentation/installation/) installed;
+- [Node.js and npm](https://nodejs.org/) installed.
 
 ### Setup
 * git clone git@github.com:GhostEsso/Blog_App.git
 * cd BlogApp
 * git checkout data_model
 
-### Install
--Command: install Ruby
--Command: gem install rails
-- [OFFICIAL](https://rubyinstaller.org/downloads/)
+Setup database:
+> sudo -u postgres createuser --interactive --pwprompt
+(provide the username and password described in [config/database.yml](./config/database.yml))
 
+### Install
+
+Install the dependencies:
+> gem install
+> npm install
+
+Create database:
+> bin/rails db:create
+
+(OPTIONAL) Fill the database with sample records:
+> bin/rails db:seed
+
+### Usage
+
+To run the server:
+> rails server
+
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ### Run test
--Command: Run through IRB / Vs Code
--Command: rails s
+
+To run tests, run the following command:
+> rspec
+
+You can also check linter errors by running these commands:
+> rubocop
+
+For testing the confirmation emails:
+> gem install mailcatcher
+
+Open [http://localhost:1080](http://localhost:1080) to view it in your browser.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -107,7 +138,9 @@ In order to run this project you need:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **[Advance Features ]**
+- [ ] **improve UI**
+- [ ] **allow more interactions**
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTRIBUTING -->
