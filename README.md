@@ -100,9 +100,9 @@ In order to run this project you need:
 
 👤 **Christopher Uduekwe**
 
-- GitHub: [@GhostEsso](https://github.com/chudisoft)
-- Twitter: [@TambanaEssohana](https://twitter.com/christopher-uduwkwe)
-- LinkedIn: [Tambana Essohanam](https://www.linkedin.com/in/chudisoft/)
+- GitHub: [@chudisoft](https://github.com/chudisoft)
+- Twitter: [@chudisoft](https://twitter.com/christopher-uduwkwe)
+- LinkedIn: [chudisoft](https://www.linkedin.com/in/chudisoft/)
 
 
 ## 🔭 Future Features <a name="future-features"></a>
