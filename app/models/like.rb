@@ -3,6 +3,8 @@ class Like < ApplicationRecord
   belongs_to :user
   after_save :update_likes_counter
 
+  validates :user, uniqueness: { scope: :post }
+
   def update_likes_counter
     post.increment!(:likes_counter)
   end
