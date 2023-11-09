@@ -12,6 +12,7 @@ ruby '3.1.2'
 
 gem 'cancancan'
 gem 'devise'
+gem 'jwt'
 gem 'mailcatcher'
 gem 'sass-rails'
 
