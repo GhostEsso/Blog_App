@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
   before :all do
-    @user = User.create(name: 'Phil')
+    @user = User.create(name: 'Phill', email: 'phill@example.com', password: 'topsecret')
     @post = Post.create(author: @user, title: 'Title')
   end
 
