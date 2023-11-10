@@ -19,9 +19,9 @@ RSpec.describe Post, type: :model do
     end
   end
 
-    context '#create validates comments_counter data type' do
-      it 'is not valid with non-numeric comments_counter' do
-        expect(Post.new(author: @author, title: 'Harry Potter', comments_counter: 'five')).to_not be_valid
+  context '#create validates comments_counter data type' do
+    it 'is not valid with non-numeric comments_counter' do
+      expect(Post.new(author: @author, title: 'Harry Potter', comments_counter: 'five')).to_not be_valid
     end
 
     it 'is not valid with float comments_counter' do

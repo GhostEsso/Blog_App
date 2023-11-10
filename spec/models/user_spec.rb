@@ -32,7 +32,7 @@ RSpec.describe User, type: :model do
 
     it 'is not valid with negative posts_counter' do
       expect(User.create(name: 'Tom', email: 'tom@example.com', password: 'topsecret',
-      posts_counter: -1)).to_not be_valid
+                         posts_counter: -1)).to_not be_valid
     end
 
     it 'is valid with integer posts_counter' do
