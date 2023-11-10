@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe 'Posts', type: :request do
   # Context for the "GET /index" test
   context 'GET /index' do
-    let(:user) { User.create(name: 'Tom') }
+    let(:user) { User.create(name: 'Tom', email: 'tom@example.com', password: 'topsecret') }
     before :each do
       # Perform an HTTP GET request to retrieve the list of posts for a user
       Post.create(author: user, title: 'Title')
@@ -39,7 +39,7 @@ RSpec.describe 'Posts', type: :request do
 
   # Context for the "GET /show" test
   context 'GET /show' do
-    let(:user) { User.create(name: 'Tom') }
+    let(:user) { User.create(name: 'Tom', email: 'tom@example.com', password: 'topsecret') }
     let(:valid_attributes) { { 'author' => user, 'title' => 'Title' } }
     let(:post) { Post.create! valid_attributes }
 
