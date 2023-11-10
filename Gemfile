@@ -14,6 +14,7 @@ gem 'cancancan'
 gem 'devise'
 gem 'jwt'
 gem 'mailcatcher'
+gem 'rswag'
 gem 'sass-rails'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
