@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :likes
 
   validates :name, presence: true
+  validates :email, presence: true
+  validates :password, presence: true
   validates :posts_counter, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   def three_recent_posts

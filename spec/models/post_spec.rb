@@ -2,35 +2,39 @@ require 'rails_helper'
 
 RSpec.describe Post, type: :model do
   before :all do
-    @author = User.create(name: 'Tom')
+    @author = User.create(name: 'Mike', email: 'mike@example.com', password: 'topsecret')
   end
 
-  it 'is valid with existing title' do
-    expect(Post.new(author: @author, title: 'Game of Thrones')).to be_valid
+  context '#create validates required fields' do
+    it 'is valid with existing title' do
+      expect(Post.new(author: @author, title: 'Harry Potter')).to be_valid
+    end
+
+    it 'is not valid with blank title' do
+      expect(Post.new(author: @author, title: nil)).to_not be_valid
+    end
+
+    it 'is not valid with title exceeding 250 characters' do
+      expect(Post.new(author: @author, title: '0' * 251)).to_not be_valid
+    end
   end
 
-  it 'is not valid with blank title' do
-    expect(Post.new(author: @author, title: nil)).to_not be_valid
-  end
+  context '#create validates comments_counter data type' do
+    it 'is not valid with non-numeric comments_counter' do
+      expect(Post.new(author: @author, title: 'Harry Potter', comments_counter: 'five')).to_not be_valid
+    end
 
-  it 'is not valid with title exceeding 250 characters' do
-    expect(Post.new(author: @author, title: '0' * 251)).to_not be_valid
-  end
+    it 'is not valid with float comments_counter' do
+      expect(Post.new(author: @author, title: 'Harry Potter', comments_counter: 1.5)).to_not be_valid
+    end
 
-  it 'is not valid with non-numeric comments_counter' do
-    expect(Post.new(author: @author, title: 'Game of Thrones', comments_counter: 'five')).to_not be_valid
-  end
+    it 'is not valid with negative comments_counter' do
+      expect(Post.new(author: @author, title: 'Harry Potter', comments_counter: -1)).to_not be_valid
+    end
 
-  it 'is not valid with float comments_counter' do
-    expect(Post.new(author: @author, title: 'Game of Thrones', comments_counter: 1.5)).to_not be_valid
-  end
-
-  it 'is not valid with negative comments_counter' do
-    expect(Post.new(author: @author, title: 'Game of Thrones', comments_counter: -1)).to_not be_valid
-  end
-
-  it 'is valid with integer comments_counter' do
-    expect(Post.new(author: @author, title: 'Game of Thrones', comments_counter: 5)).to be_valid
+    it 'is valid with integer comments_counter' do
+      expect(Post.new(author: @author, title: 'Harry Potter', comments_counter: 5)).to be_valid
+    end
   end
 
   context '#five_recent_comments' do
